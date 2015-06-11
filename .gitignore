@@ -17,3 +17,7 @@ revisionInfo
 .classpath
 .project
 .settings
+
+#IntelliJ
+.idea
+*.iml
