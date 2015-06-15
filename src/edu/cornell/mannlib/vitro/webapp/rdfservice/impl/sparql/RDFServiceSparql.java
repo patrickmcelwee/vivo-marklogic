@@ -29,6 +29,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.jena.riot.RDFDataMgr;
 
 import com.hp.hpl.jena.graph.Triple;
+import com.hp.hpl.jena.query.ARQ;
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
@@ -334,12 +335,14 @@ public class RDFServiceSparql extends RDFServiceImpl implements RDFService {
 	 */
 	@Override
 	public boolean sparqlAskQuery(String queryStr) throws RDFServiceException {
+            // ARQ.getContext().setTrue(ARQ.useSAX);
 		
 	    Query query = createQuery(queryStr);
 	    QueryExecution qe = QueryExecutionFactory.sparqlService(readEndpointURI, query);
 	    
 	    try {
-	         return qe.execAsk();
+                 return false;
+	         // return qe.execAsk();
 	    } finally {
 	         qe.close();
 	    }
